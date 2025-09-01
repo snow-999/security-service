@@ -18,9 +18,7 @@ public class MyUserDetailsService  implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws RuntimeException {
         UserDTO user = userClient.getEmail(email);
-
         if (user == null) {
-            System.out.println("User Not Found");
             throw new UsernameNotFoundException("User Name Not Found");
         }
         return new MyUserPrincipal(user);
